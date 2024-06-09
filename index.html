@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrachtwagen Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <label for="hallSwitch">Switch Hall:</label>
+        <select id="hallSwitch">
+            <option value="1">Hall 1</option>
+            <option value="2">Hall 2</option>
+        </select>
+    </div>
+    <div id="load-halls-container"></div>
+
+    <template id="hall-template">
+        <div class="load-hall">
+            <form id="truckForm">
+                <div class="form-step form-step-active">
+                    <div class="form-group">
+                        <label for="length">Lengte (max 10):</label>
+                        <input type="number" class="length" name="length" min="2" max="10" required>
+                    </div>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+                <div class="form-step">
+                    <div class="form-group">
+                        <label for="width">Breedte (max 10):</label>
+                        <input type="number" class="width" name="width" min="2" max="10" required>
+                    </div>
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+                <div class="form-step">
+                    <div class="form-group">
+                        <label for="interval">Aankomst interval (seconden):</label>
+                        <input type="number" class="interval" name="interval" required>
+                    </div>
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+                <div class="form-step">
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select class="type" name="type" required>
+                            <option value="koud">Koud transport</option>
+                            <option value="breekbaar">Breekbaar transport</option>
+                            <option value="algemeen">Algemeen transport</option>
+                            <option value="pallets">Pallets</option>
+                            <option value="snelkoerier">Snelkoerier</option>
+                        </select>
+                    </div>
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="submit" class="submitForm">Maak Vrachtwagen</button>
+                </div>
+            </form>
+            <button id="tst-toggle">toggle</button>
+
+            <div class="extraFields">
+                <label for="locationInput">Locatie voor Weercheck:</label>
+                <input type="text" id="locationInput" class="locationInput" placeholder="Stad naam" value="Amsterdam">
+                <button id="checkWeatherBtn" class="checkWeatherBtn">Check Weer</button>
+                <button id="addConveyorBelt" class="addConveyorBelt">Voeg Conveyor Belt toe</button>
+            </div>
+
+            <div id="weatherResult" class="weatherResult"></div>
+            <div id="apiResponseContainer" class="apiResponseContainer"></div>
+
+            <div id="conveyor-belt-container" class="conveyor-belt-container unselectable">Conveyor Belt Area</div>
+
+            <div id="truckContainer" class="truckContainer truck-container unselectable">Truck Container</div>
+        </div>
+    </template>
+
+    <script type="module" src="backend/controllers/HomeController.js" defer></script>
+</body>
+
+</html>
